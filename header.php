@@ -36,6 +36,36 @@ session_start();
         .logo{
             width:25vh;
         }
+        /* Without Container */
+        .zoom-without-container {
+        transition: transform .2s; /* Animation */
+        margin: 0 auto;
+        }
+        .zoom-without-container img{
+            width:100%;
+            height:auto;	
+        }
+        .zoom-without-container:hover {
+        transform: scale(1.5); 
+        z-index:1;
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+        .breadcrumb{
+            background-color:white!important;
+        }
+        .breadcrumb-link{
+            color:black;
+        }
+        .breadcrumb-link:hover{
+            color:blue;
+        }
+        
+        @media only screen and (max-width: 990px){
+            .owl-item img
+                {
+                    margin-top: 50%!important;
+                }
+        }
     </style>
 </head>
 
@@ -108,7 +138,7 @@ session_start();
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="index.php">Home</a></li>
-                                            <li><a href="catagories.php">All Products</a></li>
+                                            <li><a href="categories.php">All Products</a></li>
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
                                                     <li><a href="product_list.php"> Product list</a></li>
@@ -134,12 +164,16 @@ session_start();
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
                                     <li class="d-none d-xl-block">
-                                        <div class="form-box f-right ">
-                                            <input type="text" name="Search" placeholder="Search products">
-                                            <div class="search-icon">
-                                                <i class="fas fa-search special-tag"></i>
+                                        <form action="search-product.php" method="get">
+                                            <div class="form-box f-right ">
+                                                <input type="text" name="Search" placeholder="Search products">
+                                                <div class="search-icon">
+                                                    <button type="submit"style="background-color:white;border:0px;">
+                                                    <i class="fas fa-search special-tag"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </li>
                                     <li>
                                         <div class="shopping-card">
