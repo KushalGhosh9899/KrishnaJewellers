@@ -12,6 +12,8 @@ if(isset($_SESSION['userId'])){
             $pname=$row['pname'];
             $price=$row['price'];
             $image=$row['pimage'];
+            $_SESSION['modalvalue']=1;
+            $_SESSION['pcategory']=$row['category'];
             $sqlquery = "INSERT INTO cart(pname, pid, pimage, price, userid) VALUES(?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt,$sqlquery);
