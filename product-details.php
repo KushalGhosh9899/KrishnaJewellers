@@ -62,7 +62,10 @@
             </p>           
             <div class="card_area">                
               <div class="add_to_cart">
-                  <a href="#" class="genric-btn primary-border e-large">Add To Cart</a>
+              <form action="includes/add-cart.inc.php" method="post" style="display:inline-block;">
+                  <input type="hidden" name="pid" value="'.$row['sno'].'" >
+                  <button type="submit" name="add-cart" class="genric-btn primary-border e-large">Add to Cart</button>
+              </form>
                   <a href="checkout.php" class="genric-btn success-border e-large">Proceed To Checkout</a>
               </div>
             </div>

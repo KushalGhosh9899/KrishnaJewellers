@@ -65,7 +65,10 @@ include 'header.php';
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-ratting">
-                                                    <a href="#" class="genric-btn primary circle">Add to Cart</a>
+                                                <form action="includes/add-cart.inc.php" method="post" style="display:inline-block;">
+                                                    <input type="hidden" name="pid" value="'.$row['sno'].'" >
+                                                    <button type="submit" name="add-cart" class="genric-btn primary circle">Add to Cart</button>
+                                                </form>
                                                     <a href="product-details.php?&pid='.$row['sno'].'" class="genric-btn success circle arrow" style="margin-left:10px;">View Details</a>
                                                 </div>
                                                 <h4><a href="product-details.php?&pid='.$row['sno'].'">'.$row['pname'].'</a></h4>
