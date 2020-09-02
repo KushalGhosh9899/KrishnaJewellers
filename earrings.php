@@ -1,7 +1,9 @@
 <?php
 include 'header.php';
 ?>
-
+<head>
+    <title>Earrings - Products</title>
+</head>
     <main>
 
         <!-- Latest Products Start -->

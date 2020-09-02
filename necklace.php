@@ -1,7 +1,9 @@
 <?php
 include 'header.php';
 ?>
-
+<head>
+    <title>Necklace - Products</title>
+</head>
     <main>
 
         <!-- Latest Products Start -->
