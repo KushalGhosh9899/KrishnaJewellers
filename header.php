@@ -1,5 +1,23 @@
 <?php
 session_start();
+if(isset($_SESSION['userId'])){
+    require 'includes/db.inc.php';
+    $id=$_SESSION['userId'];
+    $sql = "SELECT * FROM cart WHERE userid='$id'";
+    $result = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($result);
+  }else {
+    $count = "0";
+  }
+echo '
+<head>
+<style>
+.header-bottom .header-right .shopping-card::before {
+    content:"'.$count.'";
+}
+</head>
+</style>
+';
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
