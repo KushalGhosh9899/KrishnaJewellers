@@ -182,7 +182,7 @@ echo '
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
                                     <li class="d-none d-xl-block">
-                                        <form action="search-product.php" method="get">
+                                        <form action="categories.php" method="get">
                                             <div class="form-box f-right ">
                                                 <input type="text" name="search-product" placeholder="Search products">
                                                 <div class="search-icon">

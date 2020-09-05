@@ -49,7 +49,44 @@ include 'header.php';
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="row">
                             <?php
-                            require 'includes/db.inc.php';
+                                require 'includes/db.inc.php';
+                            if(isset($_GET['search-product'])){
+                                $searchquery=$_GET['search-product'];
+                                $sql = "SELECT * FROM products where pname LIKE '%$searchquery%' OR pimage LIKE '%$searchquery%' OR category LIKE '%$searchquery%' OR goldWght LIKE '%$searchquery%' OR DiamondWght LIKE '%$searchquery%' OR goldPurity LIKE '%$searchquery%' OR hallmarking LIKE '%$searchquery%' OR width LIKE '%$searchquery%' OR length LIKE '%$searchquery%' OR height LIKE '%$searchquery%' OR price LIKE '%$searchquery%'";
+                                $result = $conn->query($sql);
+                                if($conn){
+                                    if ($result->num_rows > 0)
+                                    {
+                                        while($row = $result->fetch_assoc()) {
+                                            echo '<div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="single-product mb-60">
+                                                <div class="product-img zoom-without-container">
+                                                <a href="product-details.php?&pid='.$row['sno'].'">
+                                                    <img src="assets/product-images/'.$row['category'].'/'.$row['pimage'].'" alt="">
+                                                </a>
+                                                </div>
+                                                <div class="product-caption">
+                                                    <div class="product-ratting">
+                                                    <form action="includes/add-cart.inc.php" method="post" style="display:inline-block;">
+                                                        <input type="hidden" name="pid" value="'.$row['sno'].'" >
+                                                        <button type="submit" name="add-cart" class="genric-btn primary circle">Add to Cart</button>
+                                                    </form>
+                                                        <a href="product-details.php?&pid='.$row['sno'].'" class="genric-btn success circle arrow" style="margin-left:10px;">View Details</a>
+                                                    </div>
+                                                    <h4><a href="product-details.php?&pid='.$row['sno'].'">'.$row['pname'].'</a></h4>
+                                                    <div class="price">
+                                                        <ul>
+                                                            <li>Rs '.$row['price'].'</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                        }
+                                    }
+                                }
+                            }
+                            elseif(!isset($_GET['search-product'])){
                             $sql = "SELECT sno,pname,pimage,price,category FROM products";
 						    $result = $conn->query($sql);
 						    if($conn){
@@ -83,6 +120,7 @@ include 'header.php';
                                     }
                                 }
                             }
+                        }
                             ?>                                                    
                         </div>
                     </div>                   
