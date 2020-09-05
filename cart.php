@@ -1,10 +1,10 @@
-<?php 
+<?php
+if(isset($_SESSION['userId'])){
 include 'header.php';
-?>
+  echo '
 <head>
   <title>Cart</title>
 </head>
-  <!--================Cart Area =================-->
   <section class="cart_area section_padding">
     <div class="container">
       <div class="cart_inner">
@@ -17,8 +17,7 @@ include 'header.php';
                 <th scope="col">Delete</th>
               </tr>
             </thead>
-            <tbody>
-              <?
+            <tbody>';
               require 'includes/db.inc.php';
               $uid=$_SESSION['userId'];
               $sql = "SELECT * FROM cart where userid='$uid'";
@@ -63,12 +62,11 @@ include 'header.php';
                         </div>';
                         }
                       }
-              ?>
-        </div>
+        echo '</div>
       </div>
-  </section>
-  <!--================End Cart Area =================-->
-
-<?php 
+  </section>';
 include 'footer.php';
-?>
+}
+else{
+  echo "<script>window.location.href='index.php';</script>";
+}
