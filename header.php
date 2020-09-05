@@ -184,7 +184,7 @@ echo '
                                     <li class="d-none d-xl-block">
                                         <form action="search-product.php" method="get">
                                             <div class="form-box f-right ">
-                                                <input type="text" name="Search" placeholder="Search products">
+                                                <input type="text" name="search-product" placeholder="Search products">
                                                 <div class="search-icon">
                                                     <button type="submit"style="background-color:white;border:0px;">
                                                     <i class="fas fa-search special-tag"></i>

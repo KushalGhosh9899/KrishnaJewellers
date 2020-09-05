@@ -18,7 +18,7 @@ include 'header.php';
           </h2>
         </div>
         <form action="includes/check-coupon.php" method="post">
-        <input name="coupon-code" type="text" placeholder="Enter coupon code" />
+        <input name="coupon-code" type="text" placeholder="Enter coupon code" required/>
         <button name="check" type="submit" class="tp_btn">Apply Coupon</button>
         </form>
       </div>
@@ -28,19 +28,19 @@ include 'header.php';
             <h3>Billing Details</h3>
             <form class="row contact_form" action="includes/checkout.inc.php" method="post">
               <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" placeholder="Enter Your First Name*" id="first" name="name" required/>
+                <input type="text" class="form-control" placeholder="Enter Your First Name*" id="first" name="fname" required/>
               </div>
               <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" placeholder="Enter Your Last Name*" id="last" name="name" required/>
+                <input type="text" class="form-control" placeholder="Enter Your Last Name*" id="last" name="lname" required/>
               </div>              
               <div class="col-md-6 form-group p_star">
                 <input type="text" class="form-control" id="number" name="number" placeholder="Enter Your Number*" required />
               </div>
               <div class="col-md-6 form-group p_star">
-                <input type="email" class="form-control" placeholder="Enter Your Email*" id="email" name="compemailany" required/>
+                <input type="email" class="form-control" placeholder="Enter Your Email*" id="email" name="mail" required/>
               </div>
               <div class="col-md-12 form-group p_star">
-                <select class="country_select" required>
+                <select class="country_select" name="State" required>
                   <option value="1">Delhi</option>
                   <option value="2">West Bengal</option>
                   <option value="4">Punjab</option>
@@ -55,6 +55,9 @@ include 'header.php';
               <div class="col-md-12 form-group p_star">
                 <input type="text" class="form-control" id="city" placeholder="City*" required name="city" />
               </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="city" placeholder="Pincode*" required name="pincode" />
+              </div>
           </div>
           <div class="col-lg-4">
             <div class="order_box">
@@ -65,11 +68,25 @@ include 'header.php';
                     <span>Total</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#">Fresh Blackberry
-                    <span class="last">$720.00</span>
-                  </a>
-                </li>
+                <?php
+                require 'includes/db.inc.php';
+                $uid=$_SESSION['userId'];
+                $sql = "SELECT * FROM cart where userid='$uid'";
+                $result = $conn->query($sql);
+                if($conn){
+                  if ($result->num_rows > 0)
+                  {
+                    while($row = $result->fetch_assoc()){
+                      echo '
+                      <li>
+                        <a href="#">'.$row['pname'].'
+                          <span class="last">Rs '.$row['price'].'</span>
+                        </a>
+                      </li>';
+                    }
+                  }
+                }
+                ?>
                 <li>
               </ul>
               
