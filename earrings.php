@@ -31,16 +31,14 @@ include 'header.php';
                             <div class="featured">
                                 <span>Sort by: </span>
                             </div>
-                            <form action="#">
                                 <div class="select-itms">
-                                    <select name="select" id="select1">
-                                        <option value="">Featured</option>
-                                        <option value="">Featured A</option>
-                                        <option value="">Featured B</option>
-                                        <option value="">Featured C</option>
+                                <select name="select" id="select1" onchange="location = this.value;">
+                                        <option value="#">Select Filter</option>
+                                        <option value="earrings.php?filter-product=ASC">Price : Low to High</option>
+                                        <option value="earrings.php?filter-product=DESC">Price : High to Low</option>                                        
+                                        <option value="earrings.php">Clear Filter</option>
                                     </select>
                                 </div>
-                            </form>
                         </div>
                 </div>
                 <!-- Nav Card -->
@@ -50,6 +48,7 @@ include 'header.php';
                         <div class="row">
                         <?php
                             require 'includes/db.inc.php';
+                            if(!isset($_GET['filter-product'])){
                             $sql = "SELECT sno,pname,pimage,price,category FROM products where category='earrings'";
 						    $result = $conn->query($sql);
 						    if($conn){
@@ -83,6 +82,42 @@ include 'header.php';
                                     }
                                 }
                             }
+                        }elseif(isset($_GET['filter-product'])){
+                            $filterproduct=$_GET['filter-product'];
+                            $sql = "SELECT * FROM products where category='earrings' ORDER BY price $filterproduct";
+						    $result = $conn->query($sql);
+						    if($conn){
+							    if ($result->num_rows > 0)
+							    {
+								    while($row = $result->fetch_assoc()) {
+                                        echo '<div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single-product mb-60">
+                                            <div class="product-img zoom-without-container">
+                                            <a href="product-details.php?&pid='.$row['sno'].'">
+                                                <img src="assets/product-images/'.$row['category'].'/'.$row['pimage'].'" alt="">
+                                            </a>
+                                            </div>
+                                            <div class="product-caption">
+                                                <div class="product-ratting">
+                                                <form action="includes/add-cart.inc.php" method="post" style="display:inline-block;">
+                                                    <input type="hidden" name="pid" value="'.$row['sno'].'" >
+                                                    <button type="submit" name="add-cart" class="genric-btn primary circle">Add to Cart</button>
+                                                </form>
+                                                    <a href="product-details.php?&pid='.$row['sno'].'" class="genric-btn success circle arrow" style="margin-left:10px;">View Details</a>
+                                                </div>
+                                                <h4><a href="product-details.php?&pid='.$row['sno'].'">'.$row['pname'].'</a></h4>
+                                                <div class="price">
+                                                    <ul>
+                                                        <li>Rs '.$row['price'].'</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                    }
+                                }
+                            }
+                        }
                             ?>                        
                             
                         </div>
