@@ -181,18 +181,8 @@ echo '
                                                 </ul>
                                             </li>
                                             <li class="hot"><a href="trending.php">Trending</a>
-                                            </li>                                            
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="login.php">Login</a></li>
-                                                    <li><a href="cart.php">Card</a></li>
-                                                    <li><a href="elements.php">Element</a></li>
-                                                    <li><a href="about.php">About</a></li>
-                                                    <li><a href="confirmation.php">Confirmation</a></li>
-                                                    <li><a href="cart.php">Shopping Cart</a></li>
-                                                    <li><a href="checkout.php">Product Checkout</a></li>
-                                                </ul>
-                                            </li>
+                                            </li> 
+                                            <li><a href="myaccount.php">My Account</a></li>
                                             <li><a href="contact.php">Contact</a></li>
                                         </ul>
                                     </nav>

@@ -40,7 +40,7 @@ include 'header.php';
                       <p>total</p><span>: Rs '.$row['price'].'</span>
                     </li>
                     <li>
-                      <p>Payment methord</p><span>: Net Banking</span>
+                      <p>Payment method</p><span>: Net Banking</span>
                     </li>
                   </ul>
                 </div>

@@ -1,3 +1,6 @@
+<head>
+<title>Product Detail</title>
+</head>
 <?php
     include 'header.php';
     require 'includes/db.inc.php';

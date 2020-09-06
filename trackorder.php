@@ -10,7 +10,7 @@ require 'header.php';
       height:50vh;
       }
       .track1{
-        width:auto;
+        width:100%;
         height:50vh;
 
       }
@@ -80,8 +80,7 @@ require 'header.php';
 
 .orderstatus-container {
   padding-top:2em;
-  padding-left: 2em;
-  width:auto;
+  width:100%;
 }
 
 .orderstatus time {
@@ -165,17 +164,17 @@ span{
 
 
         <?php
-        if(isset($_SESSION['id'])){
-        $id=$_SESSION['id'];
-        $pid=$_GET['pid'];
-        $sql = "SELECT * FROM trackorderstatus where user_id='$id' AND product_name='$pid'";
+        if(isset($_SESSION['userId'])&&isset($_POST['check-status'])){
+        $id=$_SESSION['userId'];
+        $pid=$_POST['pid'];
+        $sql = "SELECT * FROM trackorderstatus where userid='$id' AND product_name='$pid'";
         $result = $conn->query($sql);
         if($conn){
           if ($result->num_rows > 0)
           {
             $row = $result->fetch_assoc();
 
-            $sql = "SELECT * FROM trackordercomments where user_id='$id' AND product_name='$pid'";
+            $sql = "SELECT * FROM trackordercomments where userid='$id' AND product_name='$pid'";
             $result2 = $conn->query($sql);
             if($conn){
               if ($result2->num_rows > 0)
@@ -183,6 +182,7 @@ span{
                 $row2 = $result2->fetch_assoc();
 
         echo '
+        <h3 style="text-align:center">Product Name: '.$pid.'</h3>
         <div class="track">
           <section>
             <div class="row orderstatus-container">
@@ -195,7 +195,7 @@ span{
           </div>
         </div>
         <div class="orderstatus '.$row['orderProcessing'].'">
-          <div class="orderstatus-check"><span class="orderstatus-number">5</span></div>
+          <div class="orderstatus-check"><span class="orderstatus-number">2</span></div>
           <div class="orderstatus-text">
 
             <time><b><u>Order Processing</b></u></time>
@@ -203,7 +203,7 @@ span{
           </div>
         </div>
         <div class="orderstatus '.$row['dispatchReady'].'">
-          <div class="orderstatus-check"><span class="orderstatus-number">7</span></div>
+          <div class="orderstatus-check"><span class="orderstatus-number">3</span></div>
           <div class="orderstatus-text">
 
             <time><b><u>Ready to Dispatch</b></u></time>
@@ -211,7 +211,7 @@ span{
           </div>
         </div>
         <div class="orderstatus '.$row['delivery'].'">
-          <div class="orderstatus-check"><span class="orderstatus-number">8</span></div>
+          <div class="orderstatus-check"><span class="orderstatus-number">4</span></div>
           <div class="orderstatus-text">
 
             <time><b><u>Out for Delivery</b></u></time>
@@ -219,7 +219,7 @@ span{
           </div>
         </div>
         <div class="orderstatus '.$row['delivered'].'">
-          <div class="orderstatus-check"><span class="orderstatus-number">9</span></div>
+          <div class="orderstatus-check"><span class="orderstatus-number">5</span></div>
           <div class="orderstatus-text">
 
             <time><b><u>Delivered</b></u></time>
@@ -227,7 +227,7 @@ span{
           </div>
         </div>
         <div class="orderstatus '.$row['orderComplete'].'">
-          <div class="orderstatus-check"><span class="orderstatus-number">11</span></div>
+          <div class="orderstatus-check"><span class="orderstatus-number">6</span></div>
           <div class="orderstatus-text">
 
             <time><b><u>Order Completed</b></u></time>
@@ -239,11 +239,7 @@ span{
 
     </section>
   ';}}
-      }else {
-        echo '<div class="txt"><br><br><br>
-        <h2><br><br>Nothing has been Ordered yet</h2>
-        </div>';
-          }
+      }
         }
       }?>
 
