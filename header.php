@@ -77,6 +77,24 @@ echo '
         .breadcrumb-link:hover{
             color:blue;
         }
+        .gallery-img{
+            width:23rem;
+            height:20rem;
+        }
+        .container-button { 
+        position: relative; 
+        }
+        .banner-heading{
+            color:white!important;
+        }
+        .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        }
         
         @media only screen and (max-width: 990px){
             .owl-item img
@@ -129,8 +147,6 @@ echo '
                                 <div class="header-info-right">
                                     <ul>
                                         <li><a href="myaccount.php">My Account </a></li>
-                                        <li><a href="cart.php">Shopping</a></li>
-                                        <li><a href="cart.php">Cart</a></li>
                                         <li><a href="checkout.php">Checkout</a></li>
                                     </ul>
                                 </div>
@@ -156,12 +172,15 @@ echo '
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="index.php">Home</a></li>
-                                            <li><a href="categories.php">All Products</a></li>
-                                            <li class="hot"><a href="#">Latest</a>
+                                            <li><a href="categories.php">All Products</a>
                                                 <ul class="submenu">
-                                                    <li><a href="product_list.php"> Product list</a></li>
-                                                    <li><a href="single-product.php"> Product Details</a></li>
+                                                    <li><a href="bracelets.php"> Bracelets</a></li>
+                                                    <li><a href="rings.php"> Rings</a></li>
+                                                    <li><a href="necklace.php"> Necklace</a></li>
+                                                    <li><a href="earrings.php"> Earrings</a></li>
                                                 </ul>
+                                            </li>
+                                            <li class="hot"><a href="trending.php">Trending</a>
                                             </li>                                            
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
@@ -193,11 +212,16 @@ echo '
                                             </div>
                                         </form>
                                     </li>
-                                    <li>
+                                    
+                                    <?php
+                                    if(isset($_SESSION["userId"])){
+                                        echo '<li>
                                         <div class="shopping-card">
                                             <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
-                                    </li>
+                                    </li>';
+                                        
+                                    }?>
                                     <?php
                                     if(isset($_SESSION["userId"])){
                                         echo '<li class="d-none d-lg-block"> <a href="includes/logout.inc.php" class="btn header-btn" style="background-color:#f44a40">Logout</a></li>';

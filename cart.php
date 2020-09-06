@@ -1,5 +1,4 @@
 <?php
-if(isset($_SESSION['userId'])){
 include 'header.php';
   echo '
 <head>
@@ -66,7 +65,4 @@ include 'header.php';
       </div>
   </section>';
 include 'footer.php';
-}
-else{
-  echo "<script>window.location.href='index.php';</script>";
-}
+
