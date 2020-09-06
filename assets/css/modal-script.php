@@ -172,6 +172,26 @@
 
 </div>
 
+<!-- contact Popup -->
+<div id="contactModal" class="modal-style">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <h2 class="heading">Contact Us</h2>
+
+    <form action="assets/css/removemodal.php" method="post">
+    
+    <p class="para-contents">
+    <img src="assets/images/success.gif">
+    <br>
+    Thanks for Reaching Us.
+    </p> 
+    <button type="submit" class="btn-cnfm agree" name="agree-contact">OK</button>
+    </form>
+  </div>
+
+</div>
+
 <script>
 
 var btn = <?php if(isset($_SESSION['modalvalue'])){
@@ -185,10 +205,15 @@ var nwsbtn = <?php if(isset($_SESSION['newsletter'])){
 }else{
     echo 00;
 }?>;
-
+var contactbtn = <?php if(isset($_SESSION['contact'])){
+    echo $_SESSION['contact'];
+}else{
+    echo 00;
+}?>;
 // Get the modal
 var modal = document.getElementById("myModal");
 var nwsmodal = document.getElementById("newsletterModal");
+var contactmodal = document.getElementById("contactModal");
 
 // Get the <span> element that closes the modal
 var span_cls = document.getElementsByClassName("close-btn")[0];
@@ -199,6 +224,9 @@ var span_cls = document.getElementsByClassName("close-btn")[0];
 }
 if(nwsbtn==1){
   nwsmodal.style.display = "block";
+}
+if(contactbtn==1){
+  contactmodal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -213,14 +241,5 @@ window.onclick = function(event) {
   }
 }
 
-span_cls.onclick = function() {
-  nwsmodal.style.display = "none";
-}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    nwsmodal.style.display = "none";
-  }
-}
 </script>
