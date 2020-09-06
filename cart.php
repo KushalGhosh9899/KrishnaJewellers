@@ -7,16 +7,7 @@ include 'header.php';
   <section class="cart_area section_padding">
     <div class="container">
       <div class="cart_inner">
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>';
+        ';
               require 'includes/db.inc.php';
               $uid=$_SESSION['userId'];
               $sql = "SELECT * FROM cart where userid='$uid'";
@@ -24,8 +15,19 @@ include 'header.php';
               if($conn){
                 if ($result->num_rows > 0)
                 {
+                  echo '<div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>';
                   while($row = $result->fetch_assoc()){
-                            echo '<tr>
+                            echo '
+                            <tr>
                             <td>
                               <div class="media">
                                 <div class="d-flex">
@@ -60,9 +62,20 @@ include 'header.php';
                           <a class="btn_1 checkout_btn_1" href="checkout.php">Proceed to checkout</a>
                         </div>';
                         }
+                        else{
+                          echo '<div>
+                          <h2 style="text-align:center">Nothing is in the Cart</h2><br>
+                          <div class="container-button">
+                          <div class="center">
+                          <a href="categories.php" class="genric-btn primary radius"> View Products </a>
+                          </div>
+                          </div>
+                          </div>';
+                        }
                       }
         echo '</div>
       </div>
-  </section>';
+      </div>
+      </section>';
 include 'footer.php';
 

@@ -5,6 +5,9 @@ header("Expires: 0");
 // following files need to be included
 require_once("./lib/config_paytm.php");
 require_once("./lib/encdec_paytm.php");
+session_start();
+
+$_SESSION['orderid']=$_POST["ORDER_ID"];
 
 $checkSum = "";
 $paramList = array();

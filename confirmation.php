@@ -1,23 +1,9 @@
 <?php 
 include 'header.php';
 ?>
-
-    <!-- slider Area Start-->
-    <div class="slider-area ">
-      <!-- Mobile Menu -->
-      <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/category.jpg">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-12">
-                      <div class="hero-cap text-center">
-                          <h2>Confirmation</h2>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- slider Area End-->
+<head>
+<title>Order Placed Successfully</title>
+</head>
 
   <!--================ confirmation part start =================-->
   <section class="confirmation_part section_padding">
@@ -25,66 +11,81 @@ include 'header.php';
       <div class="row">
         <div class="col-lg-12">
           <div class="confirmation_tittle">
-            <span>Thank you. Your order has been received.</span>
+            <span>Thank you. Your Order has been Placed Successfully.</span>
           </div>
         </div>
         <div class="col-lg-6 col-lx-4">
           <div class="single_confirmation_details">
             <h4>order info</h4>
             <ul>
-              <li>
-                <p>order number</p><span>: 60235</span>
-              </li>
-              <li>
-                <p>data</p><span>: Oct 03, 2017</span>
-              </li>
-              <li>
-                <p>total</p><span>: USD 2210</span>
-              </li>
-              <li>
-                <p>mayment methord</p><span>: Check payments</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6 col-lx-4">
-          <div class="single_confirmation_details">
-            <h4>Billing Address</h4>
-            <ul>
-              <li>
-                <p>Street</p><span>: 56/8</span>
-              </li>
-              <li>
-                <p>city</p><span>: Los Angeles</span>
-              </li>
-              <li>
-                <p>country</p><span>: United States</span>
-              </li>
-              <li>
-                <p>postcode</p><span>: 36952</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6 col-lx-4">
-          <div class="single_confirmation_details">
-            <h4>shipping Address</h4>
-            <ul>
-              <li>
-                <p>Street</p><span>: 56/8</span>
-              </li>
-              <li>
-                <p>city</p><span>: Los Angeles</span>
-              </li>
-              <li>
-                <p>country</p><span>: United States</span>
-              </li>
-              <li>
-                <p>postcode</p><span>: 36952</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+            <?php
+            if(isset($_SESSION['userId'])){
+              require 'includes/db.inc.php';
+              $uid=$_SESSION['userId'];
+              $orderid=$_SESSION['orderid'];
+              $sql = "SELECT * FROM deliveryDetails where userid='$uid' AND orderid='$orderid'";
+              $result = $conn->query($sql);
+              if($conn){
+                if ($result->num_rows > 0)
+                {
+                  $row = $result->fetch_assoc();
+                    echo '
+                    <li>
+                      <p>order number</p><span>: '.$row['orderid'].'</span>
+                    </li>
+                    <li>
+                      <p>date and Time</p><span>: '.$row['timestam'].'</span>
+                    </li>
+                    <li>
+                      <p>total</p><span>: Rs '.$row['price'].'</span>
+                    </li>
+                    <li>
+                      <p>Payment methord</p><span>: Net Banking</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                  <h4>Personal Details</h4>
+                  <ul>
+                    <li>
+                      <p>First name</p><span>: '.$row['fname'].'</span>
+                    </li>
+                    <li>
+                      <p>last name</p><span>: '.$row['lname'].'</span>
+                    </li>
+                    <li>
+                      <p>Phone Number</p><span>: '.$row['number'].'</span>
+                    </li>
+                    <li>
+                      <p>Email</p><span>: '.$row['email'].'</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                  <h4>shipping Address</h4>
+                  <ul>
+                  <li>
+                  <p>Line 1</p><span>: '.$row['add1'].'</span>
+                </li>
+                <li>
+                  <p>Line 2</p><span>: '.$row['add2'].'</span>
+                </li>
+                <li>
+                  <p>state</p><span>: '.$row['state'].'</span>
+                </li>
+                <li>
+                  <p>pincode</p><span>: '.$row['pincode'].'</span>
+                </li>
+                  </ul>
+                </div>
+              </div>';
+                  }}
+            }
+            ?>
       </div>
       <div class="row">
         <div class="col-lg-12">
@@ -99,42 +100,45 @@ include 'header.php';
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="3">Subtotal</th>
-                  <th> <span>$2160.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="3">shipping</th>
-                  <th><span>flat rate: $50.00</span></th>
-                </tr>
+              <?php 
+               if(isset($_SESSION['userId'])){
+                require 'includes/db.inc.php';
+                $uid=$_SESSION['userId'];
+                $orderid=$_SESSION['orderid'];
+                $sql = "SELECT * FROM orderHistory where userid='$uid' AND orderid='$orderid'";
+                $result = $conn->query($sql);
+                if($conn){
+                  if ($result->num_rows > 0)
+                  {while($row = $result->fetch_assoc()){
+                      echo '<tr>
+                      <th colspan="2"><span>'.$row['pname'].'</span></th>
+                      <th>x01</th>
+                      <th> <span>Rs '.$row['price'].'</span></th>
+                    </tr>';
+                  }}
+                  $query="SELECT SUM(price) as 'sumcart' from orderHistory WHERE userid='$uid'AND orderid='$orderid'";
+                  $res=mysqli_query($conn,$query);
+                  $data=mysqli_fetch_array($res);
+                  echo '<tr>
+                  <th colspan="3">Total</th>
+                  <th> <span>Rs '.$data['sumcart'].'</span></th>
+                </tr>';
+                }}
+              ?>                               
               </tbody>
-              <tfoot>
-                <tr>
-                  <th scope="col" colspan="3">Quantity</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>
       </div>
     </div>
+    <br><br><br>
+    <div class="container-button">
+                <div class="center">
+                <a href="index.php" class="genric-btn primary e-large"> Continue </a>
+                </div>
+                </div>
   </section>
+
   <!--================ confirmation part end =================-->
 
 <?php 

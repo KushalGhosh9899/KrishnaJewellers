@@ -26,7 +26,7 @@ include 'header.php';
         <div class="row">
           <div class="col-lg-8">
             <h3>Billing Details</h3>
-            <form class="row contact_form" action="includes/checkout.inc.php" method="post">
+            <form class="row contact_form" action="includes/confirm-order.php" method="post">
               <div class="col-md-6 form-group p_star">
                 <input type="text" class="form-control" placeholder="Enter Your First Name*" id="first" name="fname" required/>
               </div>
@@ -37,20 +37,20 @@ include 'header.php';
                 <input type="text" class="form-control" id="number" name="number" placeholder="Enter Your Number*" required />
               </div>
               <div class="col-md-6 form-group p_star">
-                <input type="email" class="form-control" placeholder="Enter Your Email*" id="email" name="mail" required/>
+                <input type="email" class="form-control" placeholder="Enter Your Email*" id="email" name="email" required/>
               </div>
               <div class="col-md-12 form-group p_star">
                 <select class="country_select" name="State" required>
-                  <option value="1">Delhi</option>
-                  <option value="2">West Bengal</option>
-                  <option value="4">Punjab</option>
+                  <option >Delhi</option>
+                  <option >West Bengal</option>
+                  <option >Punjab</option>
                 </select>
               </div>
               <div class="col-md-12 form-group p_star">
                 <input type="text" class="form-control" id="add1" placeholder="Address Line 1*" name="add1" required/>
               </div>
               <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="add2" placeholder="Address Line 2" name="add2" />
+                <input type="text" class="form-control" id="add2" placeholder="Line 2*" name="add2" required/>
               </div>
               <div class="col-md-12 form-group p_star">
                 <input type="text" class="form-control" id="city" placeholder="City*" required name="city" />
@@ -106,7 +106,7 @@ include 'header.php';
                     <span>Rs '.$data['sumcart'].'</span>
                   </a>
                 </li>';
-                  if(isset($_SESSION['discountedPrice'])){
+                  if(isset($_SESSION['discountedPrice'])){                    
                     $total=$total-$_SESSION['discountedPrice'];
                     echo '
                     <li>
@@ -116,13 +116,15 @@ include 'header.php';
                     <li>
                     <a href="#">Total
                     <span>Rs '.$_SESSION['discountedPrice'].'</span>
-                    </a>';
+                    </a>
+                    <input type=hidden name="price" value="'.$_SESSION['discountedPrice'].'">';
                   }
                   else{
                     echo '
                     <li>
                     <a href="#">Total
-                    <span>Rs '.$total.'</span></a>';
+                    <span>Rs '.$total.'</span></a>
+                    <input type=hidden name="price" value="'.$total.'">';
                   }
                 }
                 else{
