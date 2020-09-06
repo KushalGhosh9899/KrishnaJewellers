@@ -132,7 +132,7 @@
 </style>
 </head>
 
-<!-- The Modal -->
+<!-- Cart Modal -->
 <div id="myModal" class="modal-style">
 
   <!-- Modal content -->
@@ -152,6 +152,26 @@
 
 </div>
 
+<!-- Newsletter Popup -->
+<div id="newsletterModal" class="modal-style">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <h2 class="heading">Newsletter</h2>
+
+    <form action="assets/css/removemodal.php" method="post">
+    
+    <p class="para-contents">
+    <img src="assets/images/success.gif">
+    <br>
+    Newsletter Subscribed Successfully.
+    </p> 
+    <button type="submit" class="btn-cnfm agree" name="agree-newsletter">OK</button>
+    </form>
+  </div>
+
+</div>
+
 <script>
 
 var btn = <?php if(isset($_SESSION['modalvalue'])){
@@ -160,9 +180,15 @@ var btn = <?php if(isset($_SESSION['modalvalue'])){
     echo 00;
 }
  ?>;
+var nwsbtn = <?php if(isset($_SESSION['newsletter'])){
+    echo $_SESSION['newsletter'];
+}else{
+    echo 00;
+}?>;
 
 // Get the modal
 var modal = document.getElementById("myModal");
+var nwsmodal = document.getElementById("newsletterModal");
 
 // Get the <span> element that closes the modal
 var span_cls = document.getElementsByClassName("close-btn")[0];
@@ -170,6 +196,9 @@ var span_cls = document.getElementsByClassName("close-btn")[0];
 // When the user clicks the button, open the modal 
  if(btn==1) {
   modal.style.display = "block";
+}
+if(nwsbtn==1){
+  nwsmodal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -181,6 +210,17 @@ span_cls.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}
+
+span_cls.onclick = function() {
+  nwsmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    nwsmodal.style.display = "none";
   }
 }
 </script>

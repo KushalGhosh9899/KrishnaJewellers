@@ -269,8 +269,10 @@ include 'header.php';
                       <h2>Get promotions & updates!</h2>
                       <p>Subscribe to our Newsletter for Exciting Offers</p>
                       <div class="subscribe_form">
-                          <input type="email" placeholder="Enter your mail">
-                          <a href="#" class="btn_1">Subscribe</a>
+                      <form action="includes/add-newsletter.php" method="post">
+                          <input type="email" name="newsemail" placeholder="Enter your mail" required>
+                          <button type="submit" name="add-email" class="btn_1">Subscribe</button>
+                          </form>
                       </div>
                   </div>
               </div>
