@@ -1,8 +1,11 @@
 <?php
 require 'header.php';
+<<<<<<< HEAD
 if(!isset($_SESSION['userId'])){
   echo '<script> window.location.href="login.php?Please-login-first" </script>';
 }
+=======
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
 ?>
 <head>
 <title>My Account</title>
@@ -11,7 +14,15 @@ if(!isset($_SESSION['userId'])){
   <section class="confirmation_part section_padding">
     <div class="container">
       <div class="row">
+<<<<<<< HEAD
         
+=======
+        <div class="col-lg-12">
+          <div class="confirmation_tittle">
+            <span>Thank you. Your Order has been Placed Successfully.</span>
+          </div>
+        </div>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
         <div class="col-lg-6 col-lx-4">
           <div class="single_confirmation_details">
             <h4>Personal Details</h4>

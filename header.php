@@ -1,7 +1,12 @@
 <?php
 session_start();
+<<<<<<< HEAD
 require 'includes/db.inc.php';
 if(isset($_SESSION['userId'])){
+=======
+if(isset($_SESSION['userId'])){
+    require 'includes/db.inc.php';
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
     $id=$_SESSION['userId'];
     $sql = "SELECT * FROM cart WHERE userid='$id'";
     $result = mysqli_query($conn, $sql);
@@ -107,7 +112,11 @@ echo '
 
 <body>
 
+<<<<<<< HEAD
     <!-- Preloader Start
+=======
+    <!-- Preloader Start -->
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -118,7 +127,11 @@ echo '
             </div>
         </div>
     </div>
+<<<<<<< HEAD
      Preloader Start -->
+=======
+    <!-- Preloader Start -->
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
 
     <header>
         <!-- Header Start -->

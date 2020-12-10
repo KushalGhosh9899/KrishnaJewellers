@@ -1,8 +1,11 @@
 <?php
 include 'header.php';
+<<<<<<< HEAD
 if(!isset($_SESSION['userId'])){
   echo '<script> window.location.href="login.php?Please-login-first" </script>';
 }
+=======
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
 ?>
 <head>
   <title>

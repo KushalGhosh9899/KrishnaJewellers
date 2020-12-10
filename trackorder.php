@@ -4,9 +4,13 @@ require 'header.php';
 <head>
   <title>Track Order</title>
   <style>
+<<<<<<< HEAD
 time{
   color:red;
 }
+=======
+
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
     .track{
       width:100%;
       height:50vh;
@@ -161,6 +165,7 @@ time{
 span{
   display-inline;
 }
+<<<<<<< HEAD
 .done{
   font-weight:600;
 }
@@ -168,6 +173,8 @@ p{
   color:#368d22;
   font-weight:430;
 }
+=======
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
   </style>
 </head>
 
@@ -198,48 +205,83 @@ p{
               <div class="medium-12 columns">
         <div class="orderstatus '.$row['orderPlaced'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">1</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text '.$row['orderPlaced'].'">
             <time> <u>Order Placed </u></time>
+=======
+          <div class="orderstatus-text">
+            <time><b><u>Order Placed</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['orderPlaced'].'</p>
           </div>
         </div>
         <div class="orderstatus '.$row['orderProcessing'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">2</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text '.$row['orderProcessing'].'">
 
             <time> <u>Order Processing </u></time>
+=======
+          <div class="orderstatus-text">
+
+            <time><b><u>Order Processing</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['orderProcessing'].'</p>
           </div>
         </div>
         <div class="orderstatus '.$row['dispatchReady'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">3</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text '.$row['dispatchReady'].'">
 
             <time> <u>Ready to Dispatch </u></time>
+=======
+          <div class="orderstatus-text">
+
+            <time><b><u>Ready to Dispatch</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['dispatchReady'].'</p>
           </div>
         </div>
         <div class="orderstatus '.$row['delivery'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">4</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text  '.$row['delivery'].'">
 
             <time> <u>Out for Delivery </u></time>
+=======
+          <div class="orderstatus-text">
+
+            <time><b><u>Out for Delivery</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['delivery'].'</p>
           </div>
         </div>
         <div class="orderstatus '.$row['delivered'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">5</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text  '.$row['delivered'].'">
 
             <time> <u>Delivered </u></time>
+=======
+          <div class="orderstatus-text">
+
+            <time><b><u>Delivered</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['delivered'].'</p>
           </div>
         </div>
         <div class="orderstatus '.$row['orderComplete'].'">
           <div class="orderstatus-check"><span class="orderstatus-number">6</span></div>
+<<<<<<< HEAD
           <div class="orderstatus-text  '.$row['orderComplete'].'">
 
             <time> <u>Order Completed </u></time>
+=======
+          <div class="orderstatus-text">
+
+            <time><b><u>Order Completed</b></u></time>
+>>>>>>> 5d0a2d95ab00d48e65d5fe330eb1df535c13b64e
             <p>'.$row2['orderComplete'].'</p>
           </div>
         </div>
