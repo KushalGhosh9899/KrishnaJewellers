@@ -1,0 +1,28 @@
+  p{
+    text-align: center;
+    font-size: 40px;
+  }
+  .img{
+    width:100px;
+    height:100px;
+  }
+  .txt{
+    padding-top: 70px;
+    text-align: center;
+    height:50vh;
+  }
+  @media only screen and (max-width: 600px) {
+    .img{
+      width:80px;
+      height:80px;
+    }
+    .txt{
+      height:60vh;
+    }
+  }
+  @media only screen and (max-width: 350px) {
+    .txt{
+      height:70vh;
+    }
+  }
+  
